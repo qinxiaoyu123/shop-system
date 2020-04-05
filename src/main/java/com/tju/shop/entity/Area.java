@@ -48,4 +48,11 @@ public class Area {
     public void setLastEditTime(Date lastEditTime) {
         this.lastEditTime = lastEditTime;
     }
+
+    public static void main(String[] args) {
+        Area a = new Area();
+        System.out.println(a.getClass().getResource("/").getPath());
+        System.out.println(a.getClass().getResourceAsStream("/mybatis-config.xml"));
+
+    }
 }
