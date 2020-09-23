@@ -2,6 +2,7 @@ package com.tju.shop.entity;
 
 import java.util.Date;
 
+//本地账号
 public class LocalAuth {
     private Long localAuthId;
     private String username;

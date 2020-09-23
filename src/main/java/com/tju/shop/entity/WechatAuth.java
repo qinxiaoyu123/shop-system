@@ -1,7 +1,7 @@
 package com.tju.shop.entity;
 
 import java.util.Date;
-
+//微信账号
 public class WechatAuth {
     private Long wechatAuthId;
     private String openId;
