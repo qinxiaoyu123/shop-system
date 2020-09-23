@@ -3,7 +3,7 @@ package com.tju.shop.entity;
 import java.util.Date;
 
 public class PersonInfo {
-    private Long uesrId;
+    private Long userId;
     private String name;
     private String profileImg;
     private String email;
@@ -14,12 +14,12 @@ public class PersonInfo {
     private Date creatTime;
     private Date lastEditTime;
 
-    public Long getUesrId() {
-        return uesrId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUesrId(Long uesrId) {
-        this.uesrId = uesrId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
