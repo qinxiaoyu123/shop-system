@@ -5,6 +5,7 @@ import com.tju.shop.entity.Area;
 import com.tju.shop.entity.PersonInfo;
 import com.tju.shop.entity.Shop;
 import com.tju.shop.entity.ShopCategory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +17,7 @@ public class ShopDaoTest extends BaseTest {
     @Autowired
     ShopDao shopDao;
     @Test
+    @Ignore
     public void testInsertShop(){
         Shop shop = new Shop();
         PersonInfo owner = new PersonInfo();
@@ -39,5 +41,15 @@ public class ShopDaoTest extends BaseTest {
         assertEquals(1, effectedNum);
     }
 
+    @Test
+    public void testUpdateShop() {
+        Shop shop = new Shop();
+        shop.setShopId(1L);
+        shop.setShopDesc("测试描述");
+        shop.setShopAddr("测试地址");
+        shop.setLastEditTime(new Date());
+        int effectedNum = shopDao.updateShop(shop);
+        assertEquals(1, effectedNum);
+    }
 
 }
