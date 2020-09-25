@@ -6,7 +6,7 @@ public class PathUtil {
         String os = System.getProperty("os.name");
         String basePath = "";
         if(os.toLowerCase().startsWith("win")){
-            basePath = "F:/github_workspace/upload";
+            basePath = "F:/github_workspace/";
         }
         else{
             basePath = "/home/xiaoyuqin/image/";
@@ -15,7 +15,7 @@ public class PathUtil {
         return basePath;
     }
     public static String getShopImagePath(long shopId){
-        String imagePath = "/upload/images/item/shop"+shopId+"/";
+        String imagePath = "";
         return imagePath.replace("/",seperator);
     }
 
