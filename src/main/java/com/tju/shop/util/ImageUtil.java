@@ -9,6 +9,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -40,20 +41,20 @@ public class ImageUtil {
     }
     /**
      * 处理缩略图，并返回新生成图片的相对值路径
-     * @param thumbnail
+     * @param thumbnailInputStream
      * @param targetAddr
      * @return
      */
-    public static String generateThumBnail(File thumbnail, String targetAddr){
+    public static String generateThumBnail(InputStream thumbnailInputStream, String fileName, String targetAddr) {
         String realFileName = getRandomFileName();
-        String extension = getFileExtension(thumbnail);
+        String extension = getFileExtension(fileName);
         makeDirPath(targetAddr);
         String relativeAddr = targetAddr+realFileName+extension;
         logger.debug("current realtiveAddr is: "+relativeAddr);
         File dest = new File(PathUtil.getImgBasePath()+relativeAddr);
         logger.debug("current complete addr is:"+PathUtil.getImgBasePath()+relativeAddr);
         try{
-            Thumbnails.of(thumbnail).size(200,200)
+            Thumbnails.of(thumbnailInputStream).size(200,200)
                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/xiaohuangren.jpg")),0.25f)
                     .outputQuality(0.8f).toFile(dest);
         }catch (IOException e){
@@ -93,9 +94,8 @@ public class ImageUtil {
      * @param fileName
      * @return
      */
-    private static String getFileExtension(File fileName) {
-        String originalFileName = fileName.getName();
-        return originalFileName.substring(originalFileName.lastIndexOf("."));
+    private static String getFileExtension(String fileName) {
+        return fileName.substring(fileName.lastIndexOf("."));
     }
 
     public static void main(String[] args) throws IOException {
@@ -104,4 +104,6 @@ public class ImageUtil {
                 .size(200, 200).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("F:\\github_workspace\\upload\\upload\\images\\item\\headtitle\\2017061320393452772.jpg")), 0.25f)
                 .outputQuality(0.8f).toFile("F:\\github_workspace\\upload\\upload\\images\\item\\headtitle\\new.jpg");
     }
+
+
 }
